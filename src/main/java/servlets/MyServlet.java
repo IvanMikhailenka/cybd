@@ -49,7 +49,7 @@ public class MyServlet extends HttpServlet {
         Set<Song> songSet = new HashSet<>();
         songSet.add(song);
 
-        genre.setSongSet(songSet);
+//        genre.setSongSet(songSet);
         genreSet.add(genre);
 
         //QueriesToDb.setGenre(genre);
