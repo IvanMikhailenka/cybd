@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="d20abfee-6bde-42f4-bf4c-4132c25edbe8">
+    <database-info product="MySQL" version="5.5.52" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="playlist"/>
+    <table name="albums" schema="" catalog="playlist" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="album_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FKpicu7n5wr4ucyx71kh901hem9" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FKte4gkb2cqtk2erfa87oopj2cj" table="songs" schema="" catalog="playlist" columns="album_id"/>
+      <index name="FKpicu7n5wr4ucyx71kh901hem9" unique="false" columns="group_id"/>
+    </table>
+    <table name="artists" schema="" catalog="playlist" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="artist_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK40fvavuin6an15g8kug8iupgm" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK40fvavuin6an15g8kug8iupgm" unique="false" columns="group_id"/>
+    </table>
+    <table name="genres" schema="" catalog="playlist" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="genre_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKmmwnncm8ik8u7c7jnbrcy4i8w" table="song_genre" schema="" catalog="playlist" columns="song_id"/>
+    </table>
+    <table name="groups" schema="" catalog="playlist" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="group_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKpicu7n5wr4ucyx71kh901hem9" table="albums" schema="" catalog="playlist" columns="group_id"/>
+      <exported-key name="FK40fvavuin6an15g8kug8iupgm" table="artists" schema="" catalog="playlist" columns="group_id"/>
+      <exported-key name="FK8892b5lendfskyejc25mv5mds" table="songs" schema="" catalog="playlist" columns="group_id"/>
+    </table>
+    <table name="song_genre" schema="" catalog="playlist" type="TABLE">
+      <column name="genre_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="song_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="genre_id,song_id"/>
+      <foreign-key name="FKruu475n9wnuv2be0imklrtmer" columns="genre_id" ref-table="songs" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKmmwnncm8ik8u7c7jnbrcy4i8w" columns="song_id" ref-table="genres" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FKmmwnncm8ik8u7c7jnbrcy4i8w" unique="false" columns="song_id"/>
+    </table>
+    <table name="songs" schema="" catalog="playlist" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="song_duration" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="song_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="album_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK8892b5lendfskyejc25mv5mds" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKte4gkb2cqtk2erfa87oopj2cj" columns="album_id" ref-table="albums" ref-schema="" ref-catalog="playlist" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FKruu475n9wnuv2be0imklrtmer" table="song_genre" schema="" catalog="playlist" columns="genre_id"/>
+      <index name="FK8892b5lendfskyejc25mv5mds" unique="false" columns="group_id"/>
+      <index name="FKte4gkb2cqtk2erfa87oopj2cj" unique="false" columns="album_id"/>
+    </table>
+  </data-source>
+</component>
