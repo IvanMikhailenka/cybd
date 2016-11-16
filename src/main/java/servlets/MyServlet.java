@@ -34,7 +34,7 @@ public class MyServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+     /*   response.setContentType("text/html");
         String name = request.getParameter("name");
         Double duration = Double.valueOf(request.getParameter("duration"));
         String genreName = request.getParameter("genre");
@@ -58,7 +58,7 @@ public class MyServlet extends HttpServlet {
         request.setAttribute("songList", songs);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/mainPage.jsp");
         dispatcher.forward(request, response);
-
+*/
 
     }
 }

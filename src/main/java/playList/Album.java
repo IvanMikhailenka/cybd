@@ -18,7 +18,7 @@ public class Album {
     @Column(name = "album_name")
     private String albumName;
 
-    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY)
     private Set<Song> songs = new HashSet<Song>();
 
     @ManyToOne

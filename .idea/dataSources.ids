@@ -29,6 +29,7 @@
       <column name="genre_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FKmmwnncm8ik8u7c7jnbrcy4i8w" table="song_genre" schema="" catalog="playlist" columns="song_id"/>
+      <index name="UK_11hq5auj6f9viwt8hr86j714d" unique="true" columns="genre_name"/>
     </table>
     <table name="groups" schema="" catalog="playlist" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -37,6 +38,9 @@
       <exported-key name="FKpicu7n5wr4ucyx71kh901hem9" table="albums" schema="" catalog="playlist" columns="group_id"/>
       <exported-key name="FK40fvavuin6an15g8kug8iupgm" table="artists" schema="" catalog="playlist" columns="group_id"/>
       <exported-key name="FK8892b5lendfskyejc25mv5mds" table="songs" schema="" catalog="playlist" columns="group_id"/>
+    </table>
+    <table name="hibernate_sequence" schema="" catalog="playlist" type="TABLE">
+      <column name="next_val" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
     </table>
     <table name="song_genre" schema="" catalog="playlist" type="TABLE">
       <column name="genre_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>

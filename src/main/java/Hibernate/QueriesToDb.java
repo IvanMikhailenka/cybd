@@ -7,7 +7,9 @@ import playList.Genre;
 import playList.Song;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -20,24 +22,42 @@ public class QueriesToDb {
     public static void main(String... args){
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-//        List<Song> songList = new ArrayList<Song>();
-//        try {
-//            session.beginTransaction();
-//            //Query query = session.createQuery("from Song as s  where s.id = 1");
-//            //songList = query.list();
-//            Song song = new Song();
-//            song.setSongTitle("someSong");
-//            song.setSongDuration(3.22);
-//            session.save(song);
-//            session.getTransaction().commit();
-//        }
-//        finally {
-//            session.close();
-//        }
-//
-//        for(Song song: songList){
-//            System.out.println(song.toString());
-//        }
+        List<Song> songList = new ArrayList<Song>();
+        List<Genre> genreList = new ArrayList<>();
+        try {
+            session.beginTransaction();
+
+/*            Song song = new Song();
+            Genre rock = new Genre();
+            Genre metal = new Genre();
+            metal.setGenreName("metal");
+            rock.setGenreName("Rock");
+            Set<Genre> genreSet = new HashSet<>();
+            genreSet.add(rock);
+            genreSet.add(metal);
+            song.setSongTitle("Du_Hast");
+            song.setSongDuration(3.22);
+            song.setGenres(genreSet);
+            session.save(rock);
+            session.save(metal);
+            session.save(song);*/
+            //Genre genre = new Genre();
+            //genre.setGenreName("metal");
+            Query query = session.createQuery("select g from Genre as g inner join g.songSet song where song.id = 3");
+            genreList = query.list();
+           // genre = (Genre) session.get(Genre.class, genre.getGenreName());
+           // System.out.println(genre);
+            session.getTransaction().commit();
+        }
+        finally {
+            session.close();
+        }
+        for(Genre genre: genreList){
+            System.out.println(genre.toString());
+        }
+        for(Song song: songList){
+            System.out.println(song.toString());
+        }
     }
     public static List<Song> getAllSongs(){
         try {

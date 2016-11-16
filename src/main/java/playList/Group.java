@@ -18,14 +18,14 @@ public class Group {
     @Column(name = "group_name")
     private String groupName;
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Artist> artists = new HashSet<Artist>();
 
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Album> albums = new HashSet<Album>();
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Song> songs = new HashSet<Song>();
 
     public Group() {

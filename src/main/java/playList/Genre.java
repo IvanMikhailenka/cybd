@@ -17,7 +17,7 @@ public class Genre {
     @Column(name = "genre_name", unique = true)
     private String genreName;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "genres")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres")
     private Set<Song> songSet;
 
 
@@ -68,5 +68,13 @@ public class Genre {
         result = 31 * result + (genreName != null ? genreName.hashCode() : 0);
         result = 31 * result + (songSet != null ? songSet.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", genreName='" + genreName + '\'' +
+                '}';
     }
 }

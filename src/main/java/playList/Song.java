@@ -31,8 +31,8 @@ public class Song {
 
     @ManyToMany()
     @JoinTable(name = "song_genre",
-            joinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"))
     private Set<Genre> genres;
 
     public Song() {
